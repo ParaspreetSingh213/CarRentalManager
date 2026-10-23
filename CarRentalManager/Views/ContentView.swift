@@ -2,6 +2,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var rentals: [Rental] = []
+
     let cars = [
         Car(name: "Economy", dailyRate: 45),
         Car(name: "SUV", dailyRate: 75),
@@ -9,15 +11,19 @@ struct ContentView: View {
     ]
 
     var body: some View {
-        NavigationStack {
-            List(cars) { car in
-                HStack {
-                    Text(car.name)
-                    Spacer()
-                    Text("$\(car.dailyRate, specifier: "%.2f") / day")
-                }
+        TabView {
+            RentalCalculatorView(
+                cars: cars,
+                rentals: $rentals
+            )
+            .tabItem {
+                Label("Calculator", systemImage: "car.fill")
             }
-            .navigationTitle("Car Rental Manager")
+
+            RentalHistoryView(rentals: rentals)
+                .tabItem {
+                    Label("History", systemImage: "clock.fill")
+                }
         }
     }
 }
