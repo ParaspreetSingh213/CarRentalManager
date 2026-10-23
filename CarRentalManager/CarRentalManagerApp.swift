@@ -1,9 +1,3 @@
-//
-//  CarRentalManagerApp.swift
-//  CarRentalManager
-//
-//  Created by Paras Dhillon on 23/10/26.
-//
 
 import SwiftUI
 
@@ -15,3 +9,4 @@ struct CarRentalManagerApp: App {
         }
     }
 }
+

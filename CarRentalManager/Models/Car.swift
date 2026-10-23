@@ -1,7 +1,8 @@
-//
-//  Car.swift
-//  CarRentalManager
-//
-//  Created by Paras Dhillon on 23/10/26.
-//
+import Foundation
+
+struct Car: Identifiable {
+    let id = UUID()
+    let name: String
+    let dailyRate: Double
+}
 

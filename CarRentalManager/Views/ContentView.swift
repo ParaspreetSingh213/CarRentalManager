@@ -1,24 +1,28 @@
-//
-//  ContentView.swift
-//  CarRentalManager
-//
-//  Created by Paras Dhillon on 23/10/26.
-//
 
 import SwiftUI
 
 struct ContentView: View {
+    let cars = [
+        Car(name: "Economy", dailyRate: 45),
+        Car(name: "SUV", dailyRate: 75),
+        Car(name: "Luxury", dailyRate: 120)
+    ]
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List(cars) { car in
+                HStack {
+                    Text(car.name)
+                    Spacer()
+                    Text("$\(car.dailyRate, specifier: "%.2f") / day")
+                }
+            }
+            .navigationTitle("Car Rental Manager")
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
 }
+
